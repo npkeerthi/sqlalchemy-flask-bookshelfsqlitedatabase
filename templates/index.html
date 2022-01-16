@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+</head>
+<body>
+<h1>My Library</h1>
+
+    {% if books == [] %}
+         <h4>Library is empty. Why dont you add your favorite one Now!!.</h4>
+    {%else%}
+           {% for book in books %}
+            <ul>
+                <li>
+                  <a href="{{url_for('delete',id=book.id) }}">Delete</a>
+                    {{book.title}} -by {{ book.author }}.  Rating: {{book.rating}}/10
+                  <a href="{{url_for('edit',Id=book.id) }}">Edit Rating</a>         {#id=book.id this is added only to let the id number also added to url after /edit#}
+                </li>
+            </ul>
+            {% endfor %}
+    {% endif%}
+
+<a href="add">Add New Book</a>
+</body>
+</html>
